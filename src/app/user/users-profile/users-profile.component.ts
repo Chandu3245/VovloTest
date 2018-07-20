@@ -14,7 +14,7 @@ export class UsersProfileComponent implements OnInit {
   private filteredUsers: IUsers[];
   tempName: any;
   userEditId: any;
-  changeText: boolean = true;
+  changeText: boolean = false;
   constructor(private userService: UserService) { }
 
   ngOnInit() {
@@ -59,10 +59,10 @@ export class UsersProfileComponent implements OnInit {
     this.showSave();
     }
   showSave(){
-    let save = document.getElementById('saveButton');
+
     this.changeText = (this.changeText === true) ? false: true;
-    save.innerText = this.changeText ? 'Edit': 'Save';
-    console.log(this.changeText + save.innerText);
+    // this.changeText ? 'Edit': 'Save';
+    // console.log(this.changeText + save.innerText);
   
   }
 }
