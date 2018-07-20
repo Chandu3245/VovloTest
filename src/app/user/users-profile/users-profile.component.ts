@@ -13,6 +13,8 @@ export class UsersProfileComponent implements OnInit {
   private users: IUsers[];
   private filteredUsers: IUsers[];
   tempName: any;
+  userEditId: any;
+  changeText: boolean = true;
   constructor(private userService: UserService) { }
 
   ngOnInit() {
@@ -46,8 +48,16 @@ export class UsersProfileComponent implements OnInit {
     this.listFilter = '';
     this.filteredUsers = this.users;
   }
-  delete(hero: IUsers){
-    this.userService.deleteUser(hero);
-    console.log(hero);
+  delete(user: IUsers){
+    // this.userService.deleteUser(hero);
+    // console.log(hero);
+   let removeIndex = this.users.indexOf(user);
+    this.users.splice(removeIndex, 1);
   }
+  toggleId(id){
+    this.userEditId = id;
+    this.changeText = (this.changeText === true) ? false: true;
+    console.log(this.changeText);
+  }
+  
 }
