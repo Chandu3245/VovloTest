@@ -1,0 +1,52 @@
+<div class="container-fluid">
+  <div class="row" style="margin-top: 5px">
+    <div class="col-md-7 col-sm-6 text-left">
+      <h3>List of Users</h3>
+    </div>
+    <div class="col-md-4 text-right">Search by Name:
+      <input type="text" [(ngModel)]="listFilter" />
+    </div>
+    <div class="col-md-1">
+      <button class="btn btn-primary" type="button" 
+      (click)="clear()">clear</button>
+    </div>
+  </div>
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th colspan="10" class="text-center">List of Users</th>
+      </tr>
+    </thead>
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Surname</th>
+        <th>Birthdate</th>
+        <th>Phone</th>
+        <th>City</th>
+        <th>Street</th>
+        <th>Number</th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody *ngIf="filteredUsers else loading">
+      <tr *ngFor="let user of filteredUsers">
+        <td>{{user.id}}</td>
+        <td>{{user.name}}</td>
+        <td>{{user.surname}}</td>
+        <td>{{user.birthDate}}</td>
+        <td>{{user.phone}}</td>
+        <td>{{user.city}}</td>
+        <td>{{user.street}}</td>
+        <td>{{user.number}}</td>
+        <td><button class="btn btn-primary" (click)="delete(user)">Delete</button></td>
+        <td><button class="btn btn-primary">Edit</button></td>
+      </tr>
+    </tbody>
+  </table>
+  <ng-template #loading>
+    <div class="text-center"><p>Loading...</p></div>
+  </ng-template>
+</div>

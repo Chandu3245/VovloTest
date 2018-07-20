@@ -1,0 +1,21 @@
+<div class="jumbotron text-center">
+  <h1 style="font-size: 50px; font-weight: bolder;">VOLVO</h1>
+  <h6>Volvo Group</h6>
+</div>
+
+<div class="container-fluid">
+  <nav class="navbar navbar-expand-sm bg-custom navbar-dark">
+    <ul class="navbar-nav">
+      <li class="nav-item" [ngClass]="{'active':menuItem == 1 }">
+        <a class="nav-link" (click)="menuItem = 1" [routerLink]="['/welcome']">HOME</a>
+      </li>
+      <li class="nav-item" [ngClass]="{'active':menuItem == 2 }">
+        <a class="nav-link" (click)="menuItem = 2" [routerLink]="['/users']">Users</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" >Add</a>
+      </li>
+    </ul>
+  </nav>
+</div>
+<router-outlet></router-outlet>
