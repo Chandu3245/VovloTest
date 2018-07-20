@@ -56,8 +56,13 @@ export class UsersProfileComponent implements OnInit {
   }
   toggleId(id){
     this.userEditId = id;
+    this.showSave();
+    }
+  showSave(){
+    let save = document.getElementById('saveButton');
     this.changeText = (this.changeText === true) ? false: true;
-    console.log(this.changeText);
-  }
+    save.innerText = this.changeText ? 'Edit': 'Save';
+    console.log(this.changeText + save.innerText);
   
+  }
 }

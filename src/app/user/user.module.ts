@@ -4,16 +4,18 @@ import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 
 import { UsersProfileComponent } from './users-profile/users-profile.component';
+import { CreateUserComponent } from './create-user/create-user.component';
 
 
 @NgModule({
   imports: [
     CommonModule,
     RouterModule.forChild([
-      {path: 'users', component: UsersProfileComponent}
+      {path: 'users', component: UsersProfileComponent},
+      {path: 'addUser', component: CreateUserComponent}
     ]),
     FormsModule
   ],
-  declarations: [UsersProfileComponent]
+  declarations: [UsersProfileComponent, CreateUserComponent]
 })
 export class UserModule { }

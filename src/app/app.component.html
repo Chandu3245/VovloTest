@@ -12,8 +12,8 @@
       <li class="nav-item" [ngClass]="{'active':menuItem == 2 }">
         <a class="nav-link" (click)="menuItem = 2" [routerLink]="['/users']">Users</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" >Add</a>
+      <li class="nav-item" [ngClass]="{'active':menuItem == 3 }">
+        <a class="nav-link" (click)="menuItem = 3" [routerLink]="['/addUser']" >Add</a>
       </li>
     </ul>
   </nav>
