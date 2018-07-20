@@ -7,8 +7,7 @@
       <input type="text" [(ngModel)]="listFilter" />
     </div>
     <div class="col-md-1">
-      <button class="btn btn-primary" type="button" 
-      (click)="clear()">clear</button>
+      <button class="btn btn-primary" type="button" (click)="clear()">clear</button>
     </div>
   </div>
   <table class="table table-bordered table-striped">
@@ -32,21 +31,49 @@
       </tr>
     </thead>
     <tbody *ngIf="filteredUsers else loading">
-      <tr *ngFor="let user of filteredUsers">
+      <tr *ngFor="let user of filteredUsers" colData='ngModel'>
         <td>{{user.id}}</td>
-        <td>{{user.name}}</td>
-        <td>{{user.surname}}</td>
-        <td>{{user.birthDate}}</td>
-        <td>{{user.phone}}</td>
-        <td>{{user.city}}</td>
-        <td>{{user.street}}</td>
-        <td>{{user.number}}</td>
-        <td><button class="btn btn-primary" (click)="delete(user)">Delete</button></td>
-        <td><button class="btn btn-primary">Edit</button></td>
+        <td *ngIf="user.id === userEditId">
+          <input type="text" class="input" name="name" [(ngModel)]="user.name" />
+        </td>
+        <td *ngIf="user.id !== userEditId">{{user.name}}</td>
+        <td *ngIf="user.id === userEditId">
+          <input type="text" class="input" name="surname" [(ngModel)]="user.surname" />
+        </td>
+        <td *ngIf="user.id !== userEditId">{{user.surname}}</td>
+        <td *ngIf="user.id === userEditId">
+          <input type="date" class="input" name="birthdate" [(ngModel)]="user.birthDate" />
+        </td>
+        <td *ngIf="user.id !== userEditId">{{user.birthDate}}</td>
+        <td *ngIf="user.id === userEditId">
+          <input type="text" class="input" name="phone" [(ngModel)]="user.phone" />
+        </td>
+        <td *ngIf="user.id !== userEditId">{{user.phone}}</td>
+        <td *ngIf="user.id === userEditId">
+          <input type="text" class="input" name="city" [(ngModel)]="user.city" />
+        </td>
+        <td *ngIf="user.id !== userEditId">{{user.city}}</td>
+        <td *ngIf="user.id === userEditId">
+          <input type="text" class="input" name="street" [(ngModel)]="user.street" />
+        </td>
+        <td *ngIf="user.id !== userEditId">{{user.street}}</td>
+        <td *ngIf="user.id === userEditId">
+          <input type="text" class="input" name="number" [(ngModel)]="user.number" />
+        </td>
+        <td *ngIf="user.id !== userEditId">{{user.number}}</td>
+        <td>
+          <button class="btn btn-primary" (click)="delete(user)">Delete</button>
+        </td>
+        <td>
+          <button id="saveButton" class="btn btn-primary" 
+          (click)="toggleId(user.id)">Edit</button>
+        </td>
       </tr>
     </tbody>
   </table>
   <ng-template #loading>
-    <div class="text-center"><p>Loading...</p></div>
+    <div class="text-center">
+      <p>Loading...</p>
+    </div>
   </ng-template>
 </div>
