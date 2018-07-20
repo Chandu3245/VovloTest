@@ -1,3 +1,82 @@
-<p>
-  create-user works!
-</p>
+<div class="container-fluid" style="padding-left:500px; margin-top: 5px">
+
+    <form class="form-inline" novalidate [formGroup]="userForm">
+      <fieldset>
+        <div class="form-group" [ngClass]="{'custom-error': (userForm.get('name').touched || 
+                                            userForm.get('name').dirty) &&
+                                            !userForm.get('name').valid }">
+          <label class="col-md-2 mr-sm-2 control-label" for="nameId">Name</label>
+
+          <div class="col-md-4 mb-2 mr-sm-2">
+            <input class="form-control" id="nameId" type="text" placeholder="Name (required)" formControlName="name" />
+          </div>
+        </div>
+
+        <div class="form-group" [ngClass]="{'custom-error': (userForm.get('surname').touched || 
+                                            userForm.get('surname').dirty) && 
+                                            !userForm.get('surname').valid }">
+          <label class="col-md-2 mr-sm-2 control-label" for="srnameId">Surame</label>
+
+          <div class="col-md-4 mb-2 mr-sm-2">
+            <input class="form-control" id="surnameId" type="text" placeholder="Surnameame (required)" formControlName="surname" />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-md-2 mr-sm-2 control-label" for="phone">Phone</label>
+
+          <div class="col-md-4 mb-2 mr-sm-2">
+            <input class="form-control" id="phone" type="text" placeholder="phone" formControlName="phone" />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-md-2 mr-sm-2 control-label" for="phone">Birthdate</label>
+
+          <div class="col-md-4 mb-2 mr-sm-2">
+            <input class="form-control" id="birthDate" type="Date" placeholder="birthDate" formControlName="birthDate" />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-md-2 mr-sm-2 control-label" for="number">Number</label>
+
+          <div class="col-md-4 mb-2 mr-sm-2">
+            <input class="form-control" id="number" type="number" placeholder="number" formControlName="number" />
+          </div>
+        </div>
+
+        <div class="form-group" >
+          <label class="col-md-2 mr-sm-2 control-label" for="street">street</label>
+
+          <div class="col-md-4 mb-2 mr-sm-2">
+            <input class="form-control" id="street" type="street" placeholder="street" formControlName="street" />
+          </div>
+        </div>
+
+        <div class="form-group" >
+          <label class="col-md-2 mr-sm-2 control-label" for="city">city</label>
+
+          <div class="col-md-4 mb-2 mr-sm-2">
+            <input class="form-control" id="city" type="city" placeholder="city" formControlName="city" />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="col-md-9">
+            <span>
+              <button class="btn btn-primary" type="submit" [disabled]="!userForm.valid" (click)="create()">
+                Create
+              </button>
+            </span>
+            <span class="col-md-3">
+              <button class="btn btn-default" type="button" (click)="userForm.reset()">
+                Cancel
+              </button>
+            </span>
+          </div>
+        </div>
+
+      </fieldset>
+    </form>
+  </div>

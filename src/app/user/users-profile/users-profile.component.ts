@@ -14,10 +14,14 @@ export class UsersProfileComponent implements OnInit {
   private filteredUsers: IUsers[];
   tempName: any;
   userEditId: any;
-  changeText: boolean = true;
+  changeText: boolean = false;
   constructor(private userService: UserService) { }
 
   ngOnInit() {
+    this.getUserProfiles();
+  }
+
+  getUserProfiles(){
     this.userService.getUserProfiles().subscribe(users => {
       this.tempName = users;
       this.users = this.tempName.names;
@@ -48,21 +52,25 @@ export class UsersProfileComponent implements OnInit {
     this.listFilter = '';
     this.filteredUsers = this.users;
   }
+
   delete(user: IUsers){
     // this.userService.deleteUser(hero);
     // console.log(hero);
    let removeIndex = this.users.indexOf(user);
     this.users.splice(removeIndex, 1);
   }
-  toggleId(id){
-    this.userEditId = id;
-    this.showSave();
+  toggleId(user){
+    this.userEditId = user.id;
+    if(this.changeText){
+      //update user profile
+      this.userService.updateUser(user);
+      this.userEditId = '';
+      this.getUserProfiles();
     }
-  showSave(){
-    let save = document.getElementById('saveButton');
+    this.toggleButton();
+    }
+
+  toggleButton(){
     this.changeText = (this.changeText === true) ? false: true;
-    save.innerText = this.changeText ? 'Edit': 'Save';
-    console.log(this.changeText + save.innerText);
-  
   }
 }

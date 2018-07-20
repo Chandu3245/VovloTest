@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule  } from '@angular/forms';
 
 import { UsersProfileComponent } from './users-profile/users-profile.component';
 import { CreateUserComponent } from './create-user/create-user.component';
@@ -14,7 +14,8 @@ import { CreateUserComponent } from './create-user/create-user.component';
       {path: 'users', component: UsersProfileComponent},
       {path: 'addUser', component: CreateUserComponent}
     ]),
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   declarations: [UsersProfileComponent, CreateUserComponent]
 })
