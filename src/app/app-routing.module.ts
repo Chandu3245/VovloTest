@@ -6,6 +6,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 
 
 const ROUTES: Routes = [
+    {path:'user', loadChildren:'./user.module#UserModule'},
     {path: 'welcome', component: WelcomeComponent},
     {path: '', redirectTo:'welcome', pathMatch:'full'},
     {path: '**', component: PageNotFoundComponent}
